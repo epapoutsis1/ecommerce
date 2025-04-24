@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <script src="myscripts.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+</head>
+<body>
+   
+    <div class="navbar">
+        <img src="logo.png" alt="Logo" class="logo">
+        <a>Home</a>
+        <a>About</a>
+        <a>Shop</a>
+        
+        <div class="cart-container">
+            <img src="cart.png" alt="Cart" class="cart" height="40px">
+            <div id="cart-counter" class="cart-counter">0</div>
+        </div>
+    </div>
+    <div class="search-bar-container">
+        <form class="search-bar">
+            <input type="text" placeholder="Search..." />
+            <button type="submit">Search</button>
+        </form>
+    </div>
+    
+                <button id="checkout-button" class="btn-primary" onclick="openCheckoutPopup()">Checkout</button>
+            <button id="clear-cart-button" class="btn-secondary" onclick="clearCart()">Clear Cart</button>
+
+  <!--- Banner -->
+  <section class="container-fluid">
+
+    <div class="row">
+        
+        <div class="banner">
+            
+            <div class="banner-content">
+                <h1>Best Deals</h1>
+                <p>Upgrade your style with our exclusive offers!</p>
+                
+                <div class="banner-buttons">
+<!--                     
+                    <button class="btn-primary">Top Picks</button>
+                    <button class="btn-secondary">Shop Now</button> -->
+                  
+                    
+                </div>
+            </div>
+            <div class="banner-image">
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Checkout Confirmation Modal -->
+<div id="checkout-modal" class="modal">
+    <div class="modal-content">
+        <h2>Proceed to Checkout</h2>
+        <p>Are you sure you want to proceed to checkout?</p>
+        <div class="modal-buttons">
+            <button class="btn-primary" onclick="confirmCheckout()">Yes</button>
+            <button class="btn-secondary" onclick="closeCheckoutPopup()">Cancel</button>
+        </div>
+    </div>
+</div>
+
+<div class="watch-card">
+  <img src="watch.png" alt="Watch Image">
+  <h2>Product Name</h2>
+  <p>$29.99</p>
+  <button class="btn-primary" onclick="addToCart()">Add to Cart</button>
+</div>
+
+</body>
+</html>

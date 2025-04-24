@@ -1,0 +1,209 @@
+
+/* .navbar {
+    height: 80%;
+    width: 100%;
+} */
+
+
+.navbar {
+    display: flex; /* Use Flexbox for alignment */
+    align-items: center; /* Vertically align items */
+    justify-content: space-between; /* Space out items */
+    padding: 10px 20px; /* Add some padding */
+    background-color: #333; /* Optional: Navbar background color */
+    color: white; /* Optional: Navbar text color */
+}
+
+.search-bar-container {
+    display: flex; /* Use Flexbox for centering */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    margin-top: 50px; /* Move the search bar down */
+}
+
+.search-bar {
+    display: flex; /* Align input and button horizontally */
+    align-items: center; /* Vertically align input and button */
+}
+
+.search-bar input {
+    padding: 10px 15px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px 0 0 5px; /* Rounded corners for the left side */
+    outline: none;
+}
+
+.search-bar button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #098bac;
+    color: white;
+    border: none;
+    border-radius: 0 5px 5px 0; /* Rounded corners for the right side */
+    cursor: pointer;
+}
+
+.search-bar button:hover {
+    background-color: #086a8a; /* Darker shade on hover */
+}
+
+.cart-container {
+    display: flex; /* Align cart icon and counter */
+    align-items: center; /* Vertically align cart icon and counter */
+    position: relative; /* For positioning the counter */
+    margin-left: auto; /* Push the cart to the far right */
+}
+
+a {
+    display: inline-block;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    font-family:Arial;
+    margin:10px;
+    color:#2152bb;
+}
+
+.watch-card img {
+    width: 80%; /* Adjust the size of the image */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Make the image a block element */
+    margin: 0 auto; /* Center the image horizontally */
+    border-radius: 8px; /* Optional: Add rounded corners */
+}
+  .watch-card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+
+/* Banner */
+/* .banner-image {
+    background: url('img/banner.jpg') no-repeat center center / cover;
+    height:70vh;
+    width:100%;
+    background-color:rgb(68, 68, 68);
+} */
+
+/* Banner */ 
+.banner {
+    background: url('../img/watch.png') no-repeat center center / cover;
+    height: 70vh;
+    width: 50%;
+    position: relative;
+    display: inline-block;
+} 
+
+.banner-content {
+    width: 50%;
+    padding: 50px;
+    color: white;
+    font-family: Arial, sans-serif;
+    background-color: #333;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top:20%;
+}
+
+
+.banner-content h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    color: #ffffff; /* Highlighted text color */
+}
+
+.banner-content p {
+    font-size: 18px;
+    margin-bottom: 30px;
+    color: #fff;
+}
+
+.banner-buttons {
+    display: flex;
+    gap: 40px;
+}
+
+.btn-primary {
+    padding: 10px 20px;
+    background-color: #098bac;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Cart container */
+.cart-container {
+    position: relative;
+    margin-left: 20px;
+}
+
+/* Cart counter */
+.cart-counter {
+    background-color: #098bac;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: -5px;
+    right: -10px;
+}
+
+/* Cart animation */
+@keyframes cart-bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Modal styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 300px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.btn-secondary {
+    padding: 10px 20px;
+    background-color: transparent;
+    color: #098bac;
+    border: 2px solid #098bac;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
