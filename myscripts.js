@@ -1,68 +1,54 @@
+
 let cartCount = 0;
 
 function addToCart() {
-    cartCount++;
+    cartCount++; // Increment the cart count
     updateCartCounter();
-    animateCartIcon();
 }
 
 function updateCartCounter() {
     const cartCounter = document.getElementById('cart-counter');
     if (cartCounter) {
-        cartCounter.textContent = cartCount;
+        cartCounter.textContent = cartCount; // Update the counter in the navbar
     }
 }
 
-function animateCartIcon() {
-    const cartIcon = document.getElementById('cart-icon');
-    if (cartIcon) {
-        cartIcon.classList.add('cart-animate');
-        // Remove the animation class after it completes
-        setTimeout(() => {
-            cartIcon.classList.remove('cart-animate');
-        }, 500); // Match the animation duration
+// Attach event listeners to all "Add to Cart" buttons
+document.querySelectorAll('.btn-primary').forEach(button => {
+    button.addEventListener('click', addToCart);
+});
+
+let currentProductIndex = 0;
+
+function showProduct(index) {
+    const track = document.querySelector('.carousel-track');
+    const totalProducts = document.querySelectorAll('.product-card').length;
+
+    if (!track) return;
+
+    // Wrap around if index is out of bounds
+    if (index >= totalProducts) {
+        currentProductIndex = 0; // Go back to the first product
+    } else if (index < 0) {
+        currentProductIndex = totalProducts - 1; // Go to the last product
+    } else {
+        currentProductIndex = index;
     }
+
+    // Move the carousel
+    const offset = -currentProductIndex * 100; // 100% for each product
+    track.style.transform = `translateX(${offset}%)`;
 }
 
-function showCheckoutPopup() {
-    const modal = document.getElementById('checkout-modal');
-    if (modal) {
-        modal.style.display = 'flex'; // Show the modal
-    }
+function nextProduct() {
+    showProduct(currentProductIndex + 1); // Move to the next product
 }
 
-function closeCheckoutPopup() {
-    const modal = document.getElementById('checkout-modal');
-    if (modal) {
-        modal.style.display = 'none'; // Hide the modal
-    }
+function prevProduct() {
+    showProduct(currentProductIndex - 1); // Move to the previous product
 }
 
-function confirmCheckout() {
-    alert('Proceeding to checkout...');
-    closeCheckoutPopup(); // Close the modal after confirmation
-}
+// Add event listeners for navigation buttons
+document.querySelector('.carousel-btn.next').addEventListener('click', nextProduct);
+document.querySelector('.carousel-btn.prev').addEventListener('click', prevProduct);
 
-document.querySelectorAll('.product-card button').forEach(btn => {
-    btn.addEventListener('click', () => {
-      alert("Added to cart!");
-      // Later: integrate with a cart array or localStorage
-    });
-  });
-
-  const products = [
-    { name: "Sneakers", price: 59.99, image: "sneakers.jpg" },
-    { name: "Backpack", price: 39.99, image: "backpack.jpg" }
-  ];
-  
-  const container = document.getElementById('product-container');
-  products.forEach(p => {
-    container.innerHTML += `
-      <div class="watch-card">
-        <img src="${p.image}" alt="${p.name}">
-        <h2>${p.name}</h2>
-        <p>$${p.price}</p>
-        <button>Add to Cart</button>
-      </div>
-    `;
-  });

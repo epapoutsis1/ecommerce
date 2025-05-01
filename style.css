@@ -168,6 +168,59 @@ a {
     }
 }
 
+.product-carousel {
+    position: relative;
+    width: 80%;
+    margin: 20px auto;
+    overflow: hidden; /* Hide overflowing content */
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.product-card {
+    flex: 0 0 100%; /* Each product takes full width */
+    text-align: center;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+    color: white;
+    border: none;
+    padding: 15px;
+    cursor: pointer;
+    font-size: 20px;
+    border-radius: 50%; /* Make the button circular */
+    width: 50px; /* Set width for a perfect circle */
+    height: 50px; /* Set height for a perfect circle */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    transition: background-color 0.3s ease;
+}
+
+.carousel-btn.prev {
+    left: 10px; /* Position the left button */
+}
+
+.carousel-btn.next {
+    right: 10px; /* Position the right button */
+}
+
+.carousel-btn:hover {
+    background-color: rgba(0, 0, 0, 0.8); /* Darker background on hover */
+}
+
 /* Modal styles */
 .modal {
     display: none; /* Hidden by default */

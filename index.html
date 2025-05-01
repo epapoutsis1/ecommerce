@@ -46,7 +46,6 @@
                     <button class="btn-primary">Top Picks</button>
                     <button class="btn-secondary">Shop Now</button> -->
                   
-                    
                 </div>
             </div>
             <div class="banner-image">
@@ -55,6 +54,31 @@
         </div>
     </div>
 </section>
+
+            <div class="product-carousel">
+                <button class="carousel-btn prev" onclick="prevProduct()">&#10094;</button>
+                <div class="carousel-track">
+                    <div class="product-card">
+                        <img src="watch1.png" alt="Watch 1">
+                        <h2>Product 1</h2>
+                        <p>$29.99</p>
+                        <button class="btn-primary" onclick="addToCart()">Add to Cart</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="watch2.png" alt="Watch 2">
+                        <h2>Product 2</h2>
+                        <p>$39.99</p>
+                        <button class="btn-primary" onclick="addToCart()">Add to Cart</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="watch3.png" alt="Watch 3">
+                        <h2>Product 3</h2>
+                        <p>$49.99</p>
+                        <button class="btn-primary" onclick="addToCart()">Add to Cart</button>
+                    </div>
+                </div>
+                <button class="carousel-btn next" onclick="nextProduct()">&#10095;</button>
+            </div>
 
 <!-- Checkout Confirmation Modal -->
 <div id="checkout-modal" class="modal">
@@ -67,6 +91,7 @@
         </div>
     </div>
 </div>
+
 
 <div class="watch-card">
   <img src="watch.png" alt="Watch Image">
