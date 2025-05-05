@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nintendo Switch OLED</title>
+</head>
+<body>
+    <div class="navbar">
+        <img src="logo.png" alt="Logo" class="logo">
+        <a href="index.html">Home</a>
+        <a>About</a>
+        <a>Shop</a>
+        
+        <div class="cart-container">
+            <img src="cart.png" alt="Cart" class="cart" height="40px">
+            <div id="cart-counter" class="cart-counter">0</div>
+        </div>
+    </div>
+    <section class="switch-banner">
+        <img src="switchOLEDHandheld.webp" alt="Nintendo Switch OLED">
+        <div class="switch-banner-content">
+            <h1>Nintendo Switch OLED</h1>
+            <p>Experience gaming like never before with the vibrant OLED display.</p>
+            <a href="#buy" class="btn-primary">Buy Now</a>
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <h2>Features</h2>
+        <ul>
+            <li>7-inch OLED screen for vibrant visuals</li>
+            <li>64GB internal storage</li>
+            <li>Enhanced audio for handheld and tabletop play</li>
+            <li>Wide adjustable stand for tabletop mode</li>
+        </ul>
+    </section>
+
+    <section id="reviews" class="reviews">
+        <h2>What People Are Saying</h2>
+        <p>"The OLED screen is a game-changer!" - Tech Reviewer</p>
+        <p>"A must-have for any Nintendo fan." - Gamer</p>
+    </section>
+
+    <section id="buy" class="buy-now">
+        <h2>Buy Now</h2>
+        <div class="product-card">
+            <img src="switchOLED.jpg" alt="Nintendo Switch OLED">
+            <h2>Nintendo Switch OLED</h2>
+            <p>$349.99</p>
+            <button class="btn-primary" onclick="addToCart()">Add to Cart</button>
+        </div>
+    </section>
+
+    <script src="myscripts.js"></script>
+</body>
+</html>

@@ -52,3 +52,70 @@ function prevProduct() {
 document.querySelector('.carousel-btn.next').addEventListener('click', nextProduct);
 document.querySelector('.carousel-btn.prev').addEventListener('click', prevProduct);
 
+// Sample product categories for search
+const productCategories = ["watches", "shoes", "bags", "electronics", "clothing"];
+
+function handleSearch(event) {
+    event.preventDefault(); // Prevent form submission
+
+    const searchInput = document.getElementById("search-input").value.trim().toLowerCase();
+
+    // Perform basic spell check and find the closest match
+    const matchedCategory = findClosestMatch(searchInput, productCategories);
+
+    if (matchedCategory) {
+        // Redirect to the search results page with the query as a parameter
+        window.location.href = `search-results.html?query=${matchedCategory}`;
+    } else {
+        alert("No matching products found. Please try again.");
+    }
+}
+
+// Attach event listener to the search form
+document.getElementById("search-form").addEventListener("submit", handleSearch);
+
+// Function to find the closest match using Levenshtein distance
+function findClosestMatch(query, categories) {
+    let closestMatch = null;
+    let smallestDistance = Infinity;
+
+    categories.forEach(category => {
+        const distance = levenshteinDistance(query, category);
+        if (distance < smallestDistance) {
+            smallestDistance = distance;
+            closestMatch = category;
+        }
+    });
+
+    // Return the closest match if the distance is within a reasonable threshold
+    return smallestDistance <= 3 ? closestMatch : null;
+}
+
+// Levenshtein distance algorithm for spell checking
+function levenshteinDistance(a, b) {
+    const matrix = [];
+
+    for (let i = 0; i <= b.length; i++) {
+        matrix[i] = [i];
+    }
+    for (let j = 0; j <= a.length; j++) {
+        matrix[0][j] = j;
+    }
+
+    for (let i = 1; i <= b.length; i++) {
+        for (let j = 1; j <= a.length; j++) {
+            if (b.charAt(i - 1) === a.charAt(j - 1)) {
+                matrix[i][j] = matrix[i - 1][j - 1];
+            } else {
+                matrix[i][j] = Math.min(
+                    matrix[i - 1][j - 1] + 1, // Substitution
+                    matrix[i][j - 1] + 1,     // Insertion
+                    matrix[i - 1][j] + 1      // Deletion
+                );
+            }
+        }
+    }
+
+    return matrix[b.length][a.length];
+}
+
