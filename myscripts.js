@@ -1,57 +1,79 @@
+let currentProductIndex = 1; // Start at the first real product
 
-let cartCount = 0;
+function setupCarousel() {
+    const track = document.querySelector('.carousel-track');
+    const products = document.querySelectorAll('.product-card');
 
-function addToCart() {
-    cartCount++; // Increment the cart count
-    updateCartCounter();
+    if (!track || products.length === 0) return;
+
+    // Clone the first and last product cards
+    const firstClone = products[0].cloneNode(true);
+    const lastClone = products[products.length - 1].cloneNode(true);
+
+    // Add clones to the track
+    track.appendChild(firstClone);
+    track.insertBefore(lastClone, products[0]);
+
+    // Adjust the track's initial position
+    track.style.transform = `translateX(-${100}%)`;
 }
-
-function updateCartCounter() {
-    const cartCounter = document.getElementById('cart-counter');
-    if (cartCounter) {
-        cartCounter.textContent = cartCount; // Update the counter in the navbar
-    }
-}
-
-// Attach event listeners to all "Add to Cart" buttons
-document.querySelectorAll('.btn-primary').forEach(button => {
-    button.addEventListener('click', addToCart);
-});
-
-let currentProductIndex = 0;
 
 function showProduct(index) {
     const track = document.querySelector('.carousel-track');
-    const totalProducts = document.querySelectorAll('.product-card').length;
+    const products = document.querySelectorAll('.product-card');
+    const totalProducts = products.length; // Includes clones
 
     if (!track) return;
 
-    // Wrap around if index is out of bounds
-    if (index >= totalProducts) {
-        currentProductIndex = 0; // Go back to the first product
-    } else if (index < 0) {
-        currentProductIndex = totalProducts - 1; // Go to the last product
-    } else {
-        currentProductIndex = index;
-    }
-
     // Move the carousel
-    const offset = -currentProductIndex * 100; // 100% for each product
+    const offset = -index * 100; // 100% for each product
+    track.style.transition = 'transform 0.5s ease-in-out';
     track.style.transform = `translateX(${offset}%)`;
+
+    // Handle infinite scrolling
+    track.addEventListener('transitionend', () => {
+        if (index === 0) {
+            // If at the cloned last product, jump to the real last product
+            track.style.transition = 'none';
+            track.style.transform = `translateX(-${(totalProducts - 2) * 100}%)`;
+            currentProductIndex = totalProducts - 2;
+        } else if (index === totalProducts - 1) {
+            // If at the cloned first product, jump to the real first product
+            track.style.transition = 'none';
+            track.style.transform = `translateX(-${100}%)`;
+            currentProductIndex = 1;
+        }
+    }, { once: true }); // Ensure the event listener is only triggered once
 }
 
 function nextProduct() {
-    showProduct(currentProductIndex + 1); // Move to the next product
+    const products = document.querySelectorAll('.product-card');
+    const totalProducts = products.length; // Includes clones
+
+    currentProductIndex++;
+    if (currentProductIndex >= totalProducts) {
+        currentProductIndex = 1; // Reset to the real first product
+    }
+    showProduct(currentProductIndex);
 }
 
 function prevProduct() {
-    showProduct(currentProductIndex - 1); // Move to the previous product
+    const products = document.querySelectorAll('.product-card');
+    const totalProducts = products.length; // Includes clones
+
+    currentProductIndex--;
+    if (currentProductIndex < 0) {
+        currentProductIndex = totalProducts - 2; // Reset to the real last product
+    }
+    showProduct(currentProductIndex);
 }
+
+// Initialize the carousel
+setupCarousel();
 
 // Add event listeners for navigation buttons
 document.querySelector('.carousel-btn.next').addEventListener('click', nextProduct);
 document.querySelector('.carousel-btn.prev').addEventListener('click', prevProduct);
-
 // Sample product categories for search
 const productCategories = ["watches", "shoes", "bags", "electronics", "clothing"];
 
@@ -119,3 +141,30 @@ function levenshteinDistance(a, b) {
     return matrix[b.length][a.length];
 }
 
+let cart = []; // Array to store cart items
+
+function addToCart(productName) {
+    if (!cart.includes(productName)) {
+        cart.push(productName);
+        alert(`${productName} has been added to your cart.`);
+        updateCartCounter();
+    } else {
+        alert(`${productName} is already in your cart.`);
+    }
+}
+
+function removeFromCart(productName) {
+    const index = cart.indexOf(productName);
+    if (index !== -1) {
+        cart.splice(index, 1);
+        alert(`${productName} has been removed from your cart.`);
+        updateCartCounter();
+    } else {
+        alert(`${productName} is not in your cart.`);
+    }
+}
+
+function updateCartCounter() {
+    const cartCounter = document.getElementById("cart-counter");
+    cartCounter.textContent = cart.length; // Update the cart counter
+}

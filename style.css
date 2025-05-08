@@ -5,6 +5,44 @@
 } */
 
 
+.logo {
+    height: 30px; /* Adjust the height to make the logo smaller */
+    width: auto; /* Maintain the aspect ratio */
+    margin-right: 10px; /* Optional: Add spacing between the logo and the links */
+}
+/* General paragraph styling */
+p {
+    text-align: left; /* Align paragraphs to the left */
+    font-family: Arial, sans-serif; /* Use Arial font */
+    font-size: 16px; /* Adjust font size */
+    color: #333; /* Set a dark color for better readability */
+    line-height: 1.6; /* Add line height for better spacing */
+    margin: 10px 0; /* Add spacing between paragraphs */
+}
+
+/* Bullet points styling */
+ul, ol {
+    text-align: left; /* Align bullet points to the left */
+    font-family: Arial, sans-serif; /* Use Arial font */
+    font-size: 16px; /* Adjust font size */
+    color: #333; /* Set a dark color for better readability */
+    margin: 10px 0 10px 20px; /* Add spacing and indentation */
+    line-height: 1.6; /* Add line height for better spacing */
+}
+
+ul li, ol li {
+    margin-bottom: 5px; /* Add spacing between list items */
+}
+
+/* Optional: Customize bullet points */
+ul {
+    list-style-type: disc; /* Use disc bullets for unordered lists */
+}
+
+ol {
+    list-style-type: decimal; /* Use numbers for ordered lists */
+}
+
 .navbar {
     display: flex; /* Use Flexbox for alignment */
     align-items: center; /* Vertically align items */
@@ -12,6 +50,137 @@
     padding: 10px 20px; /* Add some padding */
     background-color: #333; /* Optional: Navbar background color */
     color: white; /* Optional: Navbar text color */
+}
+
+.features h2 {
+    text-align: left; /* Align the header to the left */
+    font-family: Arial, sans-serif; /* Use Arial font */
+    font-size: 20px; /* Adjust font size for the header */
+    color: #333; /* Set a dark color for better readability */
+    margin-bottom: 10px; /* Add spacing below the header */
+}
+
+.features ul {
+    list-style-type: disc; /* Use disc bullets for unordered lists */
+    margin-left: 20px; /* Add indentation for bullet points */
+    padding-left: 20px; /* Add padding for better alignment */
+}
+
+.features ul li {
+    margin-bottom: 10px; /* Add spacing between list items */
+}
+
+.features-delivery-container {
+    display: flex; /* Use Flexbox for alignment */
+    justify-content: space-between; /* Space out the sections */
+    gap: 20px; /* Add spacing between the sections */
+    margin: 20px 0; /* Add spacing around the container */
+}
+
+.features {
+    flex: 1; /* Take up equal space */
+}
+
+.description {
+    flex: 1; /* Take up equal space */
+}
+
+/* Responsive Design for Mobile */
+@media (max-width: 768px) {
+    .features-delivery-container {
+        flex-direction: column; /* Stack sections vertically on smaller screens */
+    }
+
+    .features, .description {
+        flex: none; /* Remove equal space allocation */
+        width: 100%; /* Make sections take full width */
+    }
+}
+
+.reviews h2 {
+    text-align: left; /* Align the header to the left */
+    font-family: Arial, sans-serif; /* Use Arial font */
+    font-size: 20px; /* Adjust font size for the header */
+    color: #333; /* Set a dark color for better readability */
+    margin-bottom: 10px; /* Add spacing below the header */
+}
+
+.specifications-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    text-align: left;
+}
+
+.related-products {
+    display: flex;
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.related-products .product-card {
+    width: 30%;
+    text-align: center;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.related-products .product-card img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.related-products .product-card h3 {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.related-products .product-card p {
+    font-size: 16px;
+    color: #555;
+}
+
+.related-products .btn-primary {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.related-products .btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.specifications-table th, .specifications-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+
+.specifications-table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+.qa-section {
+    margin: 20px 0;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    color: #333;
+}
+
+.qa-item {
+    margin-bottom: 15px;
+}
+
+.qa-item p {
+    margin: 5px 0;
 }
 
 .search-bar-container {
@@ -32,6 +201,7 @@
     border: 1px solid #ccc;
     border-radius: 5px 0 0 5px; /* Rounded corners for the left side */
     outline: none;
+    margin-bottom:20px;
 }
 
 .search-bar button {
@@ -42,10 +212,11 @@
     border: none;
     border-radius: 0 5px 5px 0; /* Rounded corners for the right side */
     cursor: pointer;
+    margin-bottom:20px;
 }
 
 .search-bar button:hover {
-    background-color: #086a8a; /* Darker shade on hover */
+    background-color: #076279; /* Darker shade on hover */
 }
 
 .cart-container {
@@ -62,7 +233,7 @@ a {
     font-weight: bold;
     font-family:Arial;
     margin:10px;
-    color:#2152bb;
+    color:#8eadf1;
 }
 
 .watch-card img {
@@ -111,15 +282,60 @@ a {
     text-align: center;
     color: white; /* Ensure text is visible on the image */
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow for better readability */
+    padding: 20px;
+    max-width: 90%; /* Ensure the content fits within the screen */
 }
 
 .banner-content h1 {
-    font-size: 3rem; /* Adjust as needed */
-    margin-bottom: 10px;
+    font-size: 4.5rem; /* Large font size for visibility */
+    margin-bottom: 15px;
+    color: #FFFFFF; /* White text for high contrast */
+    text-shadow: 10px 410x 50px rgba(0, 0, 0, 0.9); /* Strong shadow for better readability */
+    font-weight: 800; /* Extra bold for emphasis */
 }
 
 .banner-content p {
-    font-size: 1.5rem; /* Adjust as needed */
+    font-size: 2.5rem; /* Large font size for visibility */
+    color: #FFFFFF; /* White text for high contrast */
+    text-shadow: 10px 10px 10px rgba(0, 0, 0, 0.9); /* Strong shadow for better readability */
+    margin-top: 100px;
+    font-weight: 700; /* Bold for emphasis */
+}
+
+/* Optional: Add a semi-transparent background behind the text */
+.banner-content {
+    padding: 20px;
+    border-radius: 10px; /* Rounded corners for a polished look */
+    display: inline-block; /* Ensure the background fits the text */
+}
+
+/* Responsive Design for Mobile */
+@media (max-width: 768px) {
+    .banner {
+        height: 50vh; /* Reduce height for smaller screens */
+    }
+
+    .banner-content h1 {
+        font-size: 2rem; /* Reduce font size for mobile */
+    }
+
+    .banner-content p {
+        font-size: 1rem; /* Reduce font size for mobile */
+    }
+}
+
+@media (max-width: 480px) {
+    .banner {
+        height: 40vh; /* Further reduce height for very small screens */
+    }
+
+    .banner-content h1 {
+        font-size: 1.5rem; /* Further reduce font size */
+    }
+
+    .banner-content p {
+        font-size: 0.9rem; /* Further reduce font size */
+    }
 }
 
 .banner-image img {
@@ -167,35 +383,69 @@ a {
     right: -10px;
 }
 
-/* Cart animation */
-@keyframes cart-bounce {
-    0%, 100% {
-        transform: translateY(0);
+/* Responsive Design for Mobile */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column; /* Stack items vertically */
+        align-items: flex-start; /* Align items to the left */
     }
-    50% {
-        transform: translateY(-10px);
+
+    .navbar a {
+        margin: 5px 0; /* Add spacing between links */
+        font-size: 16px; /* Adjust font size for smaller screens */
+    }
+
+    .cart-container {
+        margin-top: 10px; /* Add spacing below the links */
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        padding: 10px; /* Reduce padding for very small screens */
+    }
+
+    .navbar a {
+        font-size: 14px; /* Further reduce font size */
+    }
+
+    .cart-container img {
+        height: 30px; /* Reduce cart icon size */
+    }
+
+    .cart-counter {
+        width: 18px;
+        height: 18px;
+        font-size: 12px; /* Adjust counter size */
     }
 }
 
 .product-carousel {
     position: relative;
-    width: 80%;
+    width: 100%; /* Full width of the carousel */
     margin: 20px auto;
     overflow: hidden; /* Hide overflowing content */
 }
 
 .carousel-track {
     display: flex;
-    transition: transform 0.5s ease-in-out;
+    transition: transform 0.5s ease-in-out; /* Smooth scrolling */
+    width: 100%; /* Adjust width dynamically */
 }
 
 .product-card {
-    flex: 0 0 100%; /* Each product takes full width */
+    flex: 0 0 100%; /* Each product takes full width of the carousel */
+    max-width: 100%; /* Ensure the card doesn't exceed its allocated width */
     text-align: center;
     padding: 20px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     background-color: #fff;
     border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box; /* Prevent padding from affecting width */
 }
 
 .carousel-btn {
@@ -219,15 +469,64 @@ a {
 }
 
 .carousel-btn.prev {
-    left: 10px; /* Position the left button */
+    left: 10px;
 }
 
 .carousel-btn.next {
-    right: 10px; /* Position the right button */
+    right: 10px;
 }
-
 .carousel-btn:hover {
     background-color: rgba(0, 0, 0, 0.8); /* Darker background on hover */
+}
+
+body {
+    font-family: Arial, sans-serif; /* Set the default font to Arial */
+}
+
+#results-container {
+    text-align: left; /* Ensure the container's content is left-aligned */
+    margin: 20px; /* Add some spacing around the container */
+}
+
+.product-card {
+    font-family: Arial, sans-serif; /* Set the font for product cards */
+    text-align: left; /* Align text to the left */
+    border: 1px solid #ddd; /* Add a light border */
+    padding: 15px; /* Add padding inside the card */
+    margin-bottom: 15px; /* Add spacing between cards */
+    border-radius: 5px; /* Slightly round the corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+}
+
+.product-card img {
+    max-width: 100%; /* Ensure images fit within the card */
+    height: auto; /* Maintain aspect ratio */
+    margin-bottom: 10px; /* Add spacing below the image */
+}
+
+.product-card h2 {
+    font-size: 18px; /* Adjust the font size for product names */
+    margin: 5px 0; /* Add spacing around the heading */
+}
+
+.product-card p {
+    font-size: 16px; /* Adjust the font size for prices */
+    color: #555; /* Use a slightly muted color for text */
+    margin: 5px 0; /* Add spacing around the paragraph */
+}
+
+.product-card .btn-primary {
+    font-size: 14px; /* Adjust the button font size */
+    padding: 10px 15px; /* Add padding to the button */
+    background-color: #007bff; /* Set a primary blue color */
+    color: white; /* Set the text color to white */
+    border: none; /* Remove the border */
+    border-radius: 3px; /* Slightly round the button corners */
+    cursor: pointer; /* Change the cursor to a pointer */
+}
+
+.product-card .btn-primary:hover {
+    background-color: #0056b3; /* Darken the button on hover */
 }
 
 /* Modal styles */
@@ -325,4 +624,75 @@ a {
 .features, .reviews, .buy-now {
     padding: 20px;
     text-align: center;
+}
+
+.footer {
+    background-color: #333; /* Dark background */
+    color: white; /* White text */
+    padding: 20px 0;
+    font-family: Arial, sans-serif;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-section {
+    flex: 1;
+    margin: 10px;
+    min-width: 200px; /* Ensure sections don't shrink too much */
+}
+
+.footer-section h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #f4f4f4;
+}
+
+.footer-section p, .footer-section ul {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #ccc;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 5px;
+}
+
+.footer-section ul li a {
+    color: #8eadf1;
+    text-decoration: none;
+}
+
+.footer-section ul li a:hover {
+    text-decoration: underline;
+}
+
+.social-links {
+    display: flex;
+    gap: 10px;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #ccc;
+}
+
+/* Footer container styling for desktop */
+@media (min-width: 1024px) {
+    .footer-section:nth-child(2) {
+        margin-left: 40px; /* Adjust this value to align with the About Us section */
+    }
 }

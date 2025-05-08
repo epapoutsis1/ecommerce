@@ -8,11 +8,11 @@
 </head>
 <body>
     <div class="navbar">
-        <img src="logo.png" alt="Logo" class="logo">
+        <img src="cartzoLogo.svg" alt="Logo" class="logo">
         <a href="index.html">Home</a>
-        <a>About</a>
-        <a>Shop</a>
-        
+        <a>Categories</a>
+        <a>Activity</a>
+
         <div class="cart-container">
             <img src="cart.png" alt="Cart" class="cart" height="40px">
             <div id="cart-counter" class="cart-counter">0</div>
@@ -23,35 +23,174 @@
         <div class="switch-banner-content">
             <h1>Nintendo Switch OLED</h1>
             <p>Experience gaming like never before with the vibrant OLED display.</p>
-            <a href="#buy" class="btn-primary">Buy Now</a>
+            <a href="#Add to Cart" class="btn-primary">Add to Cart</a>
         </div>
     </section>
 
-    <section id="features" class="features">
-        <h2>Features</h2>
-        <ul>
-            <li>7-inch OLED screen for vibrant visuals</li>
-            <li>64GB internal storage</li>
-            <li>Enhanced audio for handheld and tabletop play</li>
-            <li>Wide adjustable stand for tabletop mode</li>
-        </ul>
-    </section>
+    <div class="features-delivery-container">
+        <div class="features">
+            <h2>Features</h2>
+            <ul>
+                <li>7-inch OLED screen for vibrant visuals</li>
+                <li>64GB internal storage</li>
+                <li>Enhanced audio for handheld and tabletop play</li>
+                <li>Wide adjustable stand for tabletop mode</li>
+            </ul>
+        </div>
+    
+        <div class="description">
+            <h2>Description</h2>
+            <p>
+                Play at home or on the go with a vibrant OLED screen. Play on your TV at home or pick up and play in handheld mode on a vivid 7-inch OLED screen with the Nintendo Switch™ – OLED Model system. 
+            </p>
+            <p>
+                The system also features 64 GB of internal storage, enhanced audio, a wide, adjustable stand, and a dock with a wired LAN port.
+            </p>
+            <p>
+                <strong>Enjoy three modes in one system:</strong>
+            </p>
+            <ul>
+                <li><strong>TV mode:</strong> Connect your system to the TV using the included dock to enjoy a traditional gaming experience in HD.</li>
+                <li><strong>Handheld mode:</strong> Bring your games on your next travel adventure and enjoy playing on a 7-inch OLED screen that makes colors pop.</li>
+                <li><strong>Tabletop mode:</strong> Flip out the stand and share the screen, then share the fun with a multiplayer game.</li>
+            </ul>
+        </div>
+    </div>
 
-    <section id="reviews" class="reviews">
+    <div class="reviews">
         <h2>What People Are Saying</h2>
         <p>"The OLED screen is a game-changer!" - Tech Reviewer</p>
         <p>"A must-have for any Nintendo fan." - Gamer</p>
-    </section>
+    </div>
 
-    <section id="buy" class="buy-now">
-        <h2>Buy Now</h2>
-        <div class="product-card">
-            <img src="switchOLED.jpg" alt="Nintendo Switch OLED">
-            <h2>Nintendo Switch OLED</h2>
-            <p>$349.99</p>
-            <button class="btn-primary" onclick="addToCart()">Add to Cart</button>
+    <h2>Specifications</h2>
+<table class="specifications-table">
+    <tr>
+        <th>Feature</th>
+        <th>Details</th>
+    </tr>
+    <tr>
+        <td>Screen Size</td>
+        <td>7-inch OLED</td>
+    </tr>
+    <tr>
+        <td>Storage</td>
+        <td>64GB Internal</td>
+    </tr>
+    <tr>
+        <td>Audio</td>
+        <td>Enhanced for handheld and tabletop play</td>
+    </tr>
+    <tr>
+        <td>Stand</td>
+        <td>Wide adjustable stand</td>
+    </tr>
+    <tr>
+        <td>Battery Life</td>
+        <td>4.5 to 9 hours</td>
+    </tr>
+</table>
+
+<h2>Customer Questions & Answers</h2>
+<div class="qa-section">
+    <div class="qa-item">
+        <p><strong>Q:</strong> Does this come with any games?</p>
+        <p><strong>A:</strong> No, games are sold separately.</p>
+    </div>
+    <div class="qa-item">
+        <p><strong>Q:</strong> Can I use my old Joy-Cons with this model?</p>
+        <p><strong>A:</strong> Yes, Joy-Cons from previous models are compatible.</p>
+    </div>
+</div>
+
+    <div class="product-carousel">
+        <button class="carousel-btn prev" onclick="prevProduct()">&#10094;</button>
+        <div class="carousel-track">
+            <div class="product-card">
+                <img src="switchOLED.jpg" alt="Nintendo Switch OLED">
+                <h2>Nintendo Switch OLED</h2>
+                <p>$29.99</p>
+                <button class="btn-primary" onclick="addToCart()">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="watch.png" alt="TIMEX Watch">
+                <h2>TIMEX Watch</h2>
+                <p>$399.99</p>
+                <button class="btn-primary" onclick="addToCart()">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="watch2.jpg" alt="SIlver Watch">
+                <h2>Silver Watch</h2>
+                <p>$429.99</p>
+                <button class="btn-primary" onclick="addToCart()">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="watch3.jpg" alt="Watch">
+                <h2>Watch</h2>
+                <p>$59.99</p>
+                <button class="btn-primary" onclick="addToCart()">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="watch4.jpg" alt="Product 5">
+                <h2>Watch</h2>
+                <p>$69.99</p>
+                <button class="btn-primary" onclick="addToCart()">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="watch5.jpg" alt="Product 6">
+                <h2>Watch</h2>
+                <p>$79.99</p>
+                <button class="btn-primary" onclick="addToCart()">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="ios14Pro.jpg" alt="Iphone 14 Pro">
+                <h2>Iphone 14 Pro</h2>
+                <p>$449.99</p>
+                <button class="btn-primary" onclick="addToCart()">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="mouse.jpg" alt="Mouse">
+                <h2>Mouse</h2>
+                <p>$49.99</p>
+                <button class="btn-primary" onclick="addToCart()">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="nikeAirlifter.jpg" alt="Product 9">
+                <h2>Nike Airlifter</h2>
+                <p>$109.99</p>
+                <button class="btn-primary" onclick="addToCart()">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="cap.jpg" alt="Boston Red Sox Cap">
+                <h2>Boston Red Sox Cap</h2>
+                <p>$9.99</p>
+                <button class="btn-primary" onclick="addToCart()">Add to Cart</button>
+            </div>
         </div>
-    </section>
+        <button class="carousel-btn next" onclick="nextProduct()">&#10095;</button>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>About Us</h3>
+                <p>We provide the best deals on electronics, fashion, and more. Shop with confidence and enjoy fast delivery!</p>
+            </div>
+           
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <ul class="social-links">
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">LinkedIn</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 E-Commerce. All rights reserved.</p>
+        </div>
+    </footer>
 
     <script src="myscripts.js"></script>
 </body>

@@ -10,67 +10,129 @@
 <body>
    
     <div class="navbar">
-        <img src="logo.png" alt="Logo" class="logo">
+        <img src="cartzoLogo.svg" alt="Logo" class="logo">
         <a href="index.html">Home</a>
-        <a>About</a>
-        <a>Shop</a>
+        <a>Categories</a>
+        <a>Activity</a>
         
         <div class="cart-container">
             <img src="cart.png" alt="Cart" class="cart" height="40px">
             <div id="cart-counter" class="cart-counter">0</div>
         </div>
     </div>
+    
     <div class="search-bar-container">
-        <form class="search-bar">
-            <input type="text" placeholder="Search..." />
+        <form class="search-bar" onsubmit="searchProducts(event)">
+            <input type="text" id="search-input" placeholder="Search..." />
             <button type="submit">Search</button>
         </form>
     </div>
-    
-            <button id="checkout-button" class="btn-primary" onclick="openCheckoutPopup()">Checkout</button>
-            <button id="clear-cart-button" class="btn-secondary" onclick="clearCart()">Clear Cart</button>
 
-  <!--- Banner -->
-  <section class="container-fluid">
-    <div class="row">
-        <div class="banner">
-            <a href="switch-landing.html">
-                <div class="banner-content">
-                    <h1>Best Deals</h1>
-                    <p>Upgrade your style with our exclusive offers!</p>
-                </div>
-            </a>
+    <!--- Banner -->
+    <section class="container-fluid">
+        <div class="row">
+            <div class="banner">
+                <a href="switch-landing.html">
+                    <div class="banner-content">
+                        <h1>Best Deals</h1>
+                        <p>Upgrade your Nintendo Switch!</p>
+                    </div>
+                </a>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
-            <div class="product-carousel">
-                <button class="carousel-btn prev" onclick="prevProduct()">&#10094;</button>
-                <div class="carousel-track">
-                    <div class="product-card">
-                        <img src="switchOLED.jpg" alt="Nintendo Switch OLED">
-                        <h2>Nintendo Switch OLED</h2>
-                        <p>$349.99</p>
-                        <button class="btn-primary" onclick="addToCart()">Add to Cart</button>
-                    </div>
-                    <div class="product-card">
-                        <img src="watch2.png" alt="Watch 2">
-                        <h2>Product 2</h2>
-                        <p>$39.99</p>
-                        <button class="btn-primary" onclick="addToCart()">Add to Cart</button>
-                    </div>
-                    <div class="product-card">
-                        <img src="watch3.png" alt="Watch 3">
-                        <h2>Product 3</h2>
-                        <p>$49.99</p>
-                        <button class="btn-primary" onclick="addToCart()">Add to Cart</button>
-                    </div>
-                </div>
-                <button class="carousel-btn next" onclick="nextProduct()">&#10095;</button>
+    <div class="product-carousel">
+        <button class="carousel-btn prev" onclick="prevProduct()">&#10094;</button>
+        <div class="carousel-track">
+            <div class="product-card">
+                <img src="switchOLED.jpg" alt="Nintendo Switch OLED">
+                <h2>Nintendo Switch OLED</h2>
+                <p>$29.99</p>
+                <button class="btn-primary" onclick="addToCart()">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="watch.png" alt="TIMEX Watch">
+                <h2>TIMEX Watch</h2>
+                <p>$399.99</p>
+                <button class="btn-primary" onclick="addToCart()">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="watch2.jpg" alt="SIlver Watch">
+                <h2>Silver Watch</h2>
+                <p>$429.99</p>
+                <button class="btn-primary" onclick="addToCart()">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="watch3.jpg" alt="Watch">
+                <h2>Watch</h2>
+                <p>$59.99</p>
+                <button class="btn-primary" onclick="addToCart()">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="watch5.jpg" alt="Product 5">
+                <h2>Watch</h2>
+                <p>$69.99</p>
+                <button class="btn-primary" onclick="addToCart()">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="deodorant.jpg" alt="Product 6">
+                <h2>Axe Deodorant</h2>
+                <p>$9.99</p>
+                <button class="btn-primary" onclick="addToCart()">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="ios14Pro.jpg" alt="Iphone 14 Pro">
+                <h2>Iphone 14 Pro</h2>
+                <p>$449.99</p>
+                <button class="btn-primary" onclick="addToCart()">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="mouse.jpg" alt="Mouse">
+                <h2>Mouse</h2>
+                <p>$49.99</p>
+                <button class="btn-primary" onclick="addToCart()">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="nikeAirlifter.jpg" alt="Product 9">
+                <h2>Nike Airlifter</h2>
+                <p>$109.99</p>
+                <button class="btn-primary" onclick="addToCart()">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="cap.jpg" alt="Boston Red Sox Cap">
+                <h2>Boston Red Sox Cap</h2>
+                <p>$9.99</p>
+                <button class="btn-primary" onclick="addToCart()">Add to Cart</button>
+            </div>
+        </div>
+        <button class="carousel-btn next" onclick="nextProduct()">&#10095;</button>
+    </div>
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>About Us</h3>
+                <p>We provide the best deals on electronics, fashion, and more. Shop with confidence and enjoy fast delivery!</p>
             </div>
 
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <ul class="social-links">
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">LinkedIn</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 E-Commerce. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
 <!-- Checkout Confirmation Modal -->
-<div id="checkout-modal" class="modal">
+<!-- <div id="checkout-modal" class="modal">
     <div class="modal-content">
         <h2>Proceed to Checkout</h2>
         <p>Are you sure you want to proceed to checkout?</p>
@@ -79,15 +141,12 @@
             <button class="btn-secondary" onclick="closeCheckoutPopup()">Cancel</button>
         </div>
     </div>
-</div>
+</div> -->
 
 
-<div class="watch-card">
+<!-- <div class="watch-card">
   <img src="watch.png" alt="Watch Image">
   <h2>Product Name</h2>
   <p>$29.99</p>
   <button class="btn-primary" onclick="addToCart()">Add to Cart</button>
-</div>
-
-</body>
-</html>
+</div> -->

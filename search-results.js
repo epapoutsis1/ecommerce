@@ -1,6 +1,6 @@
 // Sample product data
 const products = [
-    { name: "Luxury Watch", category: "watches", price: "$299", image: "watch1.png" },
+    { name: "Luxury Watch", category: "watches", price: "$299", image: "watch.jpg" },
     { name: "Running Shoes", category: "shoes", price: "$99", image: "shoes1.png" },
     { name: "Leather Bag", category: "bags", price: "$199", image: "bag1.png" },
     { name: "Smartphone", category: "electronics", price: "$699", image: "phone1.png" },
