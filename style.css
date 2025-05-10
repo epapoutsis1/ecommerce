@@ -696,3 +696,71 @@ body {
         margin-left: 40px; /* Adjust this value to align with the About Us section */
     }
 }
+
+/* Maintain cart size */
+.cart-container {
+    display: flex; /* Align cart icon and counter */
+    align-items: center; /* Vertically align cart icon and counter */
+    position: relative; /* For positioning the counter */
+    margin-left: auto; /* Push the cart to the far right */
+}
+
+.cart-container img {
+    width: 55px; /* Set a fixed width for the cart icon */
+    height: 40px; /* Set a fixed height for the cart icon */
+}
+
+.cart-counter {
+    background-color: #098bac;
+    color: white;
+    font-size: 14px; /* Adjust font size for better readability */
+    font-weight: bold;
+    border-radius: 50%;
+    width: 20px; /* Fixed size for the counter */
+    height: 20px; /* Fixed size for the counter */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: -5px; /* Position the counter above the cart icon */
+    right: -10px; /* Position the counter to the right of the cart icon */
+}
+
+/* Prevent horizontal scrolling on mobile */
+@media (max-width: 768px) {
+    body, html {
+        overflow-x: hidden; /* Prevent horizontal scrolling */
+        width: 100%; /* Ensure the body and html take up the full width */
+        box-sizing: border-box; /* Include padding and border in element's width/height */
+    }
+
+    .container-fluid, .row, .navbar, .footer-container, .product-carousel, .carousel-track {
+        max-width: 100%; /* Ensure containers don't exceed the screen width */
+        overflow-x: hidden; /* Prevent horizontal overflow */
+    }
+
+    img {
+        max-width: 100%; /* Prevent images from exceeding the container width */
+        height: auto; /* Maintain aspect ratio */
+    }
+
+    .banner, .switch-banner {
+        max-width: 100%; /* Ensure these sections fit within the screen */
+        overflow-x: hidden; /* Prevent horizontal overflow */
+    }
+
+    .product-card {
+        width: 100%; /* Ensure product cards fit within the screen */
+    }
+
+    .cart-container img {
+        width: 55px; /* Maintain cart icon size on mobile */
+        height: 40px;
+    }
+
+    .cart-counter {
+        width: 20px; /* Maintain counter size on mobile */
+        height: 20px;
+        font-size: 12px; /* Adjust font size for smaller screens */
+    }
+}
