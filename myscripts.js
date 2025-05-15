@@ -35,8 +35,8 @@ function showProduct(index) {
         if (index === 0) {
             // If at the cloned last product, jump to the real last product
             track.style.transition = 'none';
-            track.style.transform = `translateX(-${(totalProducts - 2) * 100}%)`;
-            currentProductIndex = totalProducts - 2;
+            track.style.transform = `translateX(-${(totalProducts - 1) * 100}%)`;
+            currentProductIndex = totalProducts - 1;
         } else if (index === totalProducts - 1) {
             // If at the cloned first product, jump to the real first product
             track.style.transition = 'none';
@@ -63,7 +63,7 @@ function prevProduct() {
 
     currentProductIndex--;
     if (currentProductIndex < 0) {
-        currentProductIndex = totalProducts - 2; // Reset to the real last product
+        currentProductIndex = totalProducts - 1; // Reset to the real last product
     }
     showProduct(currentProductIndex);
 }

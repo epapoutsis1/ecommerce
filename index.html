@@ -9,37 +9,36 @@
 </head>
 <body>
    
-    <div class="navbar">
+<div class="navbar">
+    <a href="index.html">
         <img src="cartzoLogo.svg" alt="Logo" class="logo">
-        <a href="index.html">Home</a>
-        <a>Categories</a>
-        <a>Activity</a>
-        
-        <div class="cart-container">
-            <img src="cart.png" alt="Cart" class="cart" height="40px">
-            <div id="cart-counter" class="cart-counter">0</div>
-        </div>
+    </a>
+    <a href="categories.html">Categories</a>
+    <a href="about.html">About</a>
+    <a href="pickup&devlivery.html">Pickup & Delivery</a>
+    
+    <div class="cart-container">
+        <img src="cart.png" alt="Cart" class="cart" height="40px">
+        <div id="cart-counter" class="cart-counter">0</div>
     </div>
+</div>
     
     <div class="search-bar-container">
         <form class="search-bar" onsubmit="searchProducts(event)">
-            <input type="text" id="search-input" placeholder="Search..." />
+            <input type="text" id="search-input" placeholder="Search" />
             <button type="submit">Search</button>
         </form>
     </div>
 
     <!--- Banner -->
-    <section class="container-fluid">
-        <div class="row">
-            <div class="banner">
-                <a href="switch-landing.html">
-                    <div class="banner-content">
-                        <h1>Best Deals</h1>
-                        <p>Upgrade your Nintendo Switch!</p>
-                    </div>
-                </a>
-            </div>
-        </div>
+<section class="switch-banner switch-banner-vertical">
+    <img src="switchOLED.jpg" alt="Nintendo Switch OLED" class="switch-banner-img">
+    <div class="switch-banner-content">
+        <h1>Nintendo Switch OLED</h1>
+        <h2>$349.99</h2>
+        <button class="btn-primary">Add to Cart</button>
+    </div>
+</section>
     </section>
 
     <div class="product-carousel">

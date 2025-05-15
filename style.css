@@ -52,7 +52,25 @@ ol {
     color: white; /* Optional: Navbar text color */
 }
 
-.features h2 {
+/* Navbar link styles */
+.navbar a {
+    font-size: 15px; /* Make links smaller */
+    color: #8eadf1;
+    text-decoration: none; /* Remove underline */
+    margin: 0 8px;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    transition: color 0.2s;
+}
+
+
+
+.navbar a:hover {
+    text-decoration: none; /* Keep underline off on hover */
+    color: #5a7bc2; /* Optional: slightly darker on hover */
+}
+
+.highlights h2 {
     text-align: left; /* Align the header to the left */
     font-family: Arial, sans-serif; /* Use Arial font */
     font-size: 20px; /* Adjust font size for the header */
@@ -60,24 +78,25 @@ ol {
     margin-bottom: 10px; /* Add spacing below the header */
 }
 
-.features ul {
+.highlights ul {
     list-style-type: disc; /* Use disc bullets for unordered lists */
     margin-left: 20px; /* Add indentation for bullet points */
     padding-left: 20px; /* Add padding for better alignment */
 }
 
-.features ul li {
+
+.highlights ul li {
     margin-bottom: 10px; /* Add spacing between list items */
 }
 
-.features-delivery-container {
+.highlights-delivery-container {
     display: flex; /* Use Flexbox for alignment */
     justify-content: space-between; /* Space out the sections */
     gap: 20px; /* Add spacing between the sections */
     margin: 20px 0; /* Add spacing around the container */
 }
 
-.features {
+.highlights {
     flex: 1; /* Take up equal space */
 }
 
@@ -87,11 +106,11 @@ ol {
 
 /* Responsive Design for Mobile */
 @media (max-width: 768px) {
-    .features-delivery-container {
+    .highlights-delivery-container {
         flex-direction: column; /* Stack sections vertically on smaller screens */
     }
 
-    .features, .description {
+    .highlights, .description {
         flex: none; /* Remove equal space allocation */
         width: 100%; /* Make sections take full width */
     }
@@ -158,14 +177,30 @@ ol {
     background-color: #0056b3;
 }
 
-.specifications-table th, .specifications-table td {
-    border: 1px solid #ddd;
-    padding: 10px;
+.specifications-table-vertical {
+    width: 100%;
+    max-width: 600px;
+    margin: 24px 0 32px 40px;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
 }
-
-.specifications-table th {
-    background-color: #f4f4f4;
-    font-weight: bold;
+.specifications-table-vertical th,
+.specifications-table-vertical td {
+    padding: 12px 18px;
+    border-bottom: 1px solid #eee;
+    text-align: left;
+}
+.specifications-table-vertical th {
+    background: #f7f7f7;
+    font-weight: 600;
+    width: 220px;
+}
+.specifications-table-vertical tr:last-child td,
+.specifications-table-vertical tr:last-child th {
+    border-bottom: none;
 }
 
 .qa-section {
@@ -300,6 +335,78 @@ a {
     text-shadow: 10px 10px 10px rgba(0, 0, 0, 0.9); /* Strong shadow for better readability */
     margin-top: 100px;
     font-weight: 700; /* Bold for emphasis */
+}
+
+/* Vertically align and left-align the switch banner content */
+.switch-banner-vertical {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 320px;
+    background: #f7f7f7;
+    padding-left: 7vw;
+}
+
+.switch-banner-content-vertical {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.switch-banner-content-vertical h1 {
+    margin-bottom: 16px;
+}
+
+.switch-banner-content-vertical p {
+    margin-bottom: 18px;
+}
+
+/* Align description with highlights and switch image */
+.switch-banner-horizontal {
+    display: flex;
+    align-items: flex-start;
+    gap: 40px;
+    background: #f7f7f7;
+    padding: 40px 0 40px 40px;
+    position: relative;
+    min-height: 380px; /* Ensures enough height for vertical alignment */
+}
+
+.switch-banner-img {
+    width: 300px;
+    max-width: 20vw;
+    height: auto;
+    border-radius: 12px;
+    flex-shrink: 0;
+    background: #fff;
+    display: block;
+}
+
+.switch-banner-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    text-align: left;
+    max-width: 600px;
+    margin-top: 60px; /* Pushes description down to align with image */
+}
+
+
+@media (max-width: 900px) {
+    .switch-banner-horizontal {
+        flex-direction: column;
+        align-items: center;
+        padding: 24px 0;
+        gap: 24px;
+        min-height: unset;
+    }
+    .switch-banner-content {
+        margin-top: 0;
+        max-width: 95vw;
+    }
 }
 
 /* Optional: Add a semi-transparent background behind the text */
@@ -621,7 +728,7 @@ body {
     margin: 10px 0;
 }
 
-.features, .reviews, .buy-now {
+.highlights, .reviews, .buy-now {
     padding: 20px;
     text-align: center;
 }
@@ -726,6 +833,82 @@ body {
     right: -10px; /* Position the counter to the right of the cart icon */
 }
 
+/* Make the main product image in the switch banner smaller */
+/* Horizontal layout for switch banner */
+.switch-banner-horizontal {
+    display: flex;
+    align-items: flex-start;
+    gap: 40px;
+    background: #f7f7f7;
+    padding: 40px 0 40px 40px;
+}
+
+.switch-banner-img {
+    width: 300px;
+    max-width: 20vw;
+    height: auto;
+    border-radius: 12px;
+    flex-shrink: 0;
+    background: #fff;
+}
+
+.switch-banner-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    text-align: left;
+    max-width: 600px;
+}
+
+.switch-banner-content h1,
+.switch-banner-content h2,
+.switch-banner-content p,
+.switch-banner-content button {
+    margin-left: 0;
+    margin-right: 0;
+    text-align: left;
+}
+
+/* Ensure all section headers, bullets, and paragraphs are left-aligned with consistent margin */
+h1, h2, h3, .highlights h2, .specifications-table-vertical-heading,
+.qa-section-heading, .about-section-heading, .details-section-heading, .reviews h2 {
+    text-align: left;
+    margin-left: 40px;
+    margin-right: 0;
+    margin-bottom: 16px;
+}
+
+ul, ol, p {
+    text-align: left;
+    margin-left: 40px;
+    margin-right: 0;
+}
+
+/* Responsive: Stack image above content on mobile */
+@media (max-width: 900px) {
+    .switch-banner-horizontal {
+        flex-direction: column;
+        align-items: center;
+        padding: 24px 0;
+        gap: 24px;
+    }
+    .switch-banner-img {
+        max-width: 90vw;
+        width: 100%;
+    }
+    .switch-banner-content {
+        max-width: 95vw;
+        align-items: flex-start;
+    }
+    h1, h2, h3, .highlights h2, .specifications-table-vertical-heading,
+    .qa-section-heading, .about-section-heading, .details-section-heading, .reviews h2,
+    ul, ol, p {
+        margin-left: 16px;
+        margin-right: 16px;
+    }
+}
+
 /* Prevent horizontal scrolling on mobile */
 @media (max-width: 768px) {
     body, html {
@@ -764,3 +947,80 @@ body {
         font-size: 12px; /* Adjust font size for smaller screens */
     }
 }
+
+
+/* categories page */
+/* Improved category list styling for user-friendly box layout */
+.category-list {
+    list-style: none;
+    padding: 0;
+    margin: 30px auto;
+    max-width: 600px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+    border: 1px solid #eee;
+    overflow: hidden;
+}
+
+.category-list li {
+    display: flex;
+    align-items: center;
+    padding: 18px 24px;
+    border-bottom: 1px solid #f0f0f0;
+    cursor: pointer;
+}
+
+.category-list li:last-child {
+    border-bottom: none;
+}
+
+.category-list li:hover {
+    background: #f8faff;
+}
+
+.category-thumb {
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-right: 28px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    background: #fafafa;
+    flex-shrink: 0;
+}
+
+.category-list span {
+    font-size: 1.1rem;
+    color: #222;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+}
+
+/* Center main section headers */
+h1, .main-title, .page-title {
+    text-align: center;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+/* Left-align section headers (Highlights, Specifications, Q&A, About this item, Details) with consistent left margin */
+.highlights h2,
+.specifications-table-vertical-heading,
+.qa-section-heading,
+.about-section-heading,
+.details-section-heading,
+.reviews h2,
+h2 {
+    text-align: left;
+    margin-left: 40px;
+    margin-right: 0;
+    /* Optional: add consistent spacing below */
+    margin-bottom: 16px;
+}
+
+/* Remove left margin for centered headers if needed */
+h1 + h2, .main-title + h2, .page-title + h2 {
+    margin-left: 0;
+}
+
