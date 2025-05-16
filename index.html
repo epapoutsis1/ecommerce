@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <script src="myscripts.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cart</title>
+    <title>Cartzo</title>
 </head>
 <body>
    
@@ -13,14 +13,16 @@
     <a href="index.html">
         <img src="cartzoLogo.svg" alt="Logo" class="logo">
     </a>
-    <a href="categories.html">Categories</a>
-    <a href="about.html">About</a>
-    <a href="pickup&devlivery.html">Pickup & Delivery</a>
+    <a>Categories</a>
+    <a>About</a>
+    <a>Deals</a>
     
     <div class="cart-container">
         <img src="cart.png" alt="Cart" class="cart" height="40px">
         <div id="cart-counter" class="cart-counter">0</div>
     </div>
+</div>
+
 </div>
     
     <div class="search-bar-container">
@@ -32,14 +34,13 @@
 
     <!--- Banner -->
 <section class="switch-banner switch-banner-vertical">
-    <img src="switchOLED.jpg" alt="Nintendo Switch OLED" class="switch-banner-img">
+    <a href="switch-landing.html">
+        <img src="switchOLEDHandheld.webp" alt="Nintendo Switch OLED" class="switch-banner-img clickable">
+    </a>
     <div class="switch-banner-content">
         <h1>Nintendo Switch OLED</h1>
-        <h2>$349.99</h2>
-        <button class="btn-primary">Add to Cart</button>
     </div>
 </section>
-    </section>
 
     <div class="product-carousel">
         <button class="carousel-btn prev" onclick="prevProduct()">&#10094;</button>
@@ -110,23 +111,23 @@
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-section">
-                <h3>About Us</h3>
-                <p>We provide the best deals on electronics, fashion, and more. Shop with confidence and enjoy fast delivery!</p>
+                <h3>Links</h3>
+                <a>Categories</a>
+                <a>About</a>
+                <a>Deals</a>
             </div>
 
             <div class="footer-section">
                 <h3>Follow Us</h3>
                 <ul class="social-links">
-                    <li><a href="#">Facebook</a></li>
-                    <li><a href="#">Twitter</a></li>
-                    <li><a href="#">Instagram</a></li>
-                    <li><a href="#">LinkedIn</a></li>
+                    <li><a href="#"><img src="instagramLogo.webp" alt="Instagram" class="social-icon"></a></li>
+                    <li><a href="#"><img src="linkedinLogo.svg" alt="LinkedIn" class="social-icon"></a></li>
                 </ul>
             </div>
         </div>
-        <div class="footer-bottom">
+        <!-- <div class="footer-bottom">
             <p>&copy; 2025 E-Commerce. All rights reserved.</p>
-        </div>
+        </div> -->
     </footer>
 </body>
 </html>

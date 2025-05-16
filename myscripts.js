@@ -1,106 +1,174 @@
 let currentProductIndex = 1; // Start at the first real product
 
+function isMobile() {
+    return window.innerWidth <= 900;
+}
+
+// Desktop: Setup infinite loop carousel with clones
 function setupCarousel() {
     const track = document.querySelector('.carousel-track');
-    const products = document.querySelectorAll('.product-card');
+    if (!track) return;
 
-    if (!track || products.length === 0) return;
+    // Remove previous clones
+    track.querySelectorAll('.clone').forEach(node => node.remove());
 
-    // Clone the first and last product cards
-    const firstClone = products[0].cloneNode(true);
-    const lastClone = products[products.length - 1].cloneNode(true);
+    if (isMobile()) {
+        // On mobile: no clones, no transform, no transition
+        track.style.transition = 'none';
+        track.style.transform = 'none';
+        return;
+    }
 
-    // Add clones to the track
-    track.appendChild(firstClone);
-    track.insertBefore(lastClone, products[0]);
+    // Get original product cards (not clones)
+    let products = Array.from(track.children).filter(el => !el.classList.contains('clone'));
 
-    // Adjust the track's initial position
-    track.style.transform = `translateX(-${100}%)`;
+    // Clone first and last for infinite loop
+    if (products.length > 1) {
+        const firstClone = products[0].cloneNode(true);
+        const lastClone = products[products.length - 1].cloneNode(true);
+        firstClone.classList.add('clone');
+        lastClone.classList.add('clone');
+        track.appendChild(firstClone);
+        track.insertBefore(lastClone, products[0]);
+    }
+
+    // Now select all cards including clones
+    currentProductIndex = 1;
+    track.style.transition = 'none';
+    track.style.transform = `translateX(-100%)`;
+    void track.offsetWidth; // Force reflow
+    track.style.transition = 'transform 0.5s ease-in-out';
 }
 
 function showProduct(index) {
+    if (isMobile()) return; // No JS scroll on mobile
+
     const track = document.querySelector('.carousel-track');
-    const products = document.querySelectorAll('.product-card');
-    const totalProducts = products.length; // Includes clones
+    const products = track.querySelectorAll('.product-card');
+    const totalProducts = products.length;
 
     if (!track) return;
 
-    // Move the carousel
-    const offset = -index * 100; // 100% for each product
+    const offset = -index * 100;
     track.style.transition = 'transform 0.5s ease-in-out';
     track.style.transform = `translateX(${offset}%)`;
 
-    // Handle infinite scrolling
-    track.addEventListener('transitionend', () => {
+    track.addEventListener('transitionend', function handler() {
         if (index === 0) {
-            // If at the cloned last product, jump to the real last product
             track.style.transition = 'none';
-            track.style.transform = `translateX(-${(totalProducts - 1) * 100}%)`;
-            currentProductIndex = totalProducts - 1;
+            track.style.transform = `translateX(-${(totalProducts - 2) * 100}%)`;
+            currentProductIndex = totalProducts - 2;
         } else if (index === totalProducts - 1) {
-            // If at the cloned first product, jump to the real first product
             track.style.transition = 'none';
-            track.style.transform = `translateX(-${100}%)`;
+            track.style.transform = `translateX(-100%)`;
             currentProductIndex = 1;
         }
-    }, { once: true }); // Ensure the event listener is only triggered once
+        track.removeEventListener('transitionend', handler);
+    });
 }
 
 function nextProduct() {
-    const products = document.querySelectorAll('.product-card');
-    const totalProducts = products.length; // Includes clones
-
+    if (isMobile()) return;
+    const track = document.querySelector('.carousel-track');
+    const products = track.querySelectorAll('.product-card');
+    const totalProducts = products.length;
     currentProductIndex++;
     if (currentProductIndex >= totalProducts) {
-        currentProductIndex = 1; // Reset to the real first product
+        currentProductIndex = 1;
     }
     showProduct(currentProductIndex);
 }
 
 function prevProduct() {
-    const products = document.querySelectorAll('.product-card');
-    const totalProducts = products.length; // Includes clones
-
+    if (isMobile()) return;
+    const track = document.querySelector('.carousel-track');
+    const products = track.querySelectorAll('.product-card');
+    const totalProducts = products.length;
     currentProductIndex--;
     if (currentProductIndex < 0) {
-        currentProductIndex = totalProducts - 1; // Reset to the real last product
+        currentProductIndex = totalProducts - 1;
     }
     showProduct(currentProductIndex);
 }
 
-// Initialize the carousel
-setupCarousel();
+// For mobile: native swipe only, no arrow buttons, no clones, no loop
+function scrollCarouselBy(direction) {
+    const carousel = document.querySelector('.product-carousel');
+    const cards = document.querySelectorAll('.carousel-track .product-card');
+    if (!carousel || !cards.length) return;
 
-// Add event listeners for navigation buttons
-document.querySelector('.carousel-btn.next').addEventListener('click', nextProduct);
-document.querySelector('.carousel-btn.prev').addEventListener('click', prevProduct);
-// Sample product categories for search
+    // Find the card closest to the left edge
+    let closestIndex = 0;
+    let minDiff = Infinity;
+    const carouselRect = carousel.getBoundingClientRect();
+    cards.forEach((card, i) => {
+        const diff = Math.abs(card.getBoundingClientRect().left - carouselRect.left);
+        if (diff < minDiff) {
+            minDiff = diff;
+            closestIndex = i;
+        }
+    });
+
+    let newIndex = closestIndex + direction;
+    if (newIndex < 0) newIndex = 0;
+    if (newIndex > cards.length - 1) newIndex = cards.length - 1;
+
+    const card = cards[newIndex];
+    const left = card.offsetLeft - (carousel.offsetWidth - card.offsetWidth) / 2;
+    carousel.scrollTo({ left, behavior: 'smooth' });
+}
+
+// Attach correct event listeners based on device
+function setupCarouselEvents() {
+    const nextBtn = document.querySelector('.carousel-btn.next');
+    const prevBtn = document.querySelector('.carousel-btn.prev');
+
+    if (nextBtn) nextBtn.onclick = null;
+    if (prevBtn) prevBtn.onclick = null;
+
+    if (isMobile()) {
+        // Swipe only: hide buttons via CSS, but if you want tap-to-scroll, uncomment below:
+        // if (nextBtn) nextBtn.onclick = () => scrollCarouselBy(1);
+        // if (prevBtn) prevBtn.onclick = () => scrollCarouselBy(-1);
+    } else {
+        if (nextBtn) nextBtn.onclick = nextProduct;
+        if (prevBtn) prevBtn.onclick = prevProduct;
+    }
+}
+
+// Initialize the carousel and events on load and resize
+window.addEventListener('DOMContentLoaded', () => {
+    setupCarousel();
+    setupCarouselEvents();
+    if (!isMobile()) showProduct(currentProductIndex);
+});
+window.addEventListener('resize', () => {
+    setupCarousel();
+    setupCarouselEvents();
+    if (!isMobile()) showProduct(currentProductIndex);
+});
+
+// --- Search and Cart Logic (unchanged) ---
+
 const productCategories = ["watches", "shoes", "bags", "electronics", "clothing"];
 
 function handleSearch(event) {
-    event.preventDefault(); // Prevent form submission
-
+    event.preventDefault();
     const searchInput = document.getElementById("search-input").value.trim().toLowerCase();
-
-    // Perform basic spell check and find the closest match
     const matchedCategory = findClosestMatch(searchInput, productCategories);
 
     if (matchedCategory) {
-        // Redirect to the search results page with the query as a parameter
         window.location.href = `search-results.html?query=${matchedCategory}`;
     } else {
         alert("No matching products found. Please try again.");
     }
 }
 
-// Attach event listener to the search form
 document.getElementById("search-form").addEventListener("submit", handleSearch);
 
-// Function to find the closest match using Levenshtein distance
 function findClosestMatch(query, categories) {
     let closestMatch = null;
     let smallestDistance = Infinity;
-
     categories.forEach(category => {
         const distance = levenshteinDistance(query, category);
         if (distance < smallestDistance) {
@@ -108,40 +176,34 @@ function findClosestMatch(query, categories) {
             closestMatch = category;
         }
     });
-
-    // Return the closest match if the distance is within a reasonable threshold
     return smallestDistance <= 3 ? closestMatch : null;
 }
 
-// Levenshtein distance algorithm for spell checking
 function levenshteinDistance(a, b) {
     const matrix = [];
-
     for (let i = 0; i <= b.length; i++) {
         matrix[i] = [i];
     }
     for (let j = 0; j <= a.length; j++) {
         matrix[0][j] = j;
     }
-
     for (let i = 1; i <= b.length; i++) {
         for (let j = 1; j <= a.length; j++) {
             if (b.charAt(i - 1) === a.charAt(j - 1)) {
                 matrix[i][j] = matrix[i - 1][j - 1];
             } else {
                 matrix[i][j] = Math.min(
-                    matrix[i - 1][j - 1] + 1, // Substitution
-                    matrix[i][j - 1] + 1,     // Insertion
-                    matrix[i - 1][j] + 1      // Deletion
+                    matrix[i - 1][j - 1] + 1,
+                    matrix[i][j - 1] + 1,
+                    matrix[i - 1][j] + 1
                 );
             }
         }
     }
-
     return matrix[b.length][a.length];
 }
 
-let cart = []; // Array to store cart items
+let cart = [];
 
 function addToCart(productName) {
     if (!cart.includes(productName)) {
@@ -166,5 +228,5 @@ function removeFromCart(productName) {
 
 function updateCartCounter() {
     const cartCounter = document.getElementById("cart-counter");
-    cartCounter.textContent = cart.length; // Update the cart counter
+    cartCounter.textContent = cart.length;
 }
