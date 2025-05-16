@@ -68,51 +68,93 @@ ol {
     color: #5a7bc2; /* Optional: slightly darker on hover */
 }
 
-.highlights h2 {
-    text-align: left; /* Align the header to the left */
-    font-family: Arial, sans-serif; /* Use Arial font */
-    font-size: 20px; /* Adjust font size for the header */
-    color: #333; /* Set a dark color for better readability */
-    margin-bottom: 10px; /* Add spacing below the header */
-}
-
-.highlights ul {
-    list-style-type: disc; /* Use disc bullets for unordered lists */
-    margin-left: 20px; /* Add indentation for bullet points */
-    padding-left: 20px; /* Add padding for better alignment */
-}
-
-.highlights ul li {
-    margin-bottom: 10px; /* Add spacing between list items */
-}
-
+/* --- Align highlights and description content --- */
 .highlights-delivery-container {
-    display: flex; /* Use Flexbox for alignment */
-    justify-content: space-between; /* Space out the sections */
-    gap: 20px; /* Add spacing between the sections */
-    margin: 20px 0; /* Add spacing around the container */
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+   
+
+
+    max-width: 85%;
+    margin: 40px auto;
+    font-family: Arial, sans-serif;
+    align-items: flex-start; /* Align tops of both columns */
 }
 
 .highlights {
-    flex: 1; /* Take up equal space */
+    flex: 1 1 0;
+    padding-right: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.highlights h2 {
+    margin-bottom: 12px;
+}
+
+.highlights ul {
+    padding-left: 20px;
+    margin: 0;
+    list-style-type: disc;
+    width: 100%;
+}
+
+.highlights ul li {
+    margin-bottom: 10px;
+    text-align: left;
 }
 
 .description {
-    flex: 1; /* Take up equal space */
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
-/* Responsive Design for Mobile */
-@media (max-width: 768px) {
+.description h2 {
+    margin-bottom: 12px;
+}
+
+.description p {
+    color: #555;
+    font-size: 1rem;
+    margin-bottom: 10px;
+    text-align: left;
+    width: 100%;
+}
+
+/* Responsive: Stack highlights and description vertically and fit mobile screens */
+@media (max-width: 900px) {
     .highlights-delivery-container {
-        flex-direction: column; /* Stack sections vertically on smaller screens */
+        flex-direction: column;
+        gap: 0;
+        padding: 12px 4vw;
+        max-width: 100vw;
+        margin: 24px 0;
+        box-sizing: border-box;
     }
-
     .highlights, .description {
-        flex: none; /* Remove equal space allocation */
-        width: 100%; /* Make sections take full width */
+        padding: 0;
+        align-items: flex-start;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .highlights h2,
+    .description h2 {
+        margin-left: 0;
+        margin-right: 0;
+        font-size: 1.1rem;
+    }
+    .highlights ul,
+    .description p {
+        margin-left: 0;
+        margin-right: 0;
+        width: 100%;
+        font-size: 1rem;
     }
 }
-
 .reviews h2 {
     text-align: left; /* Align the header to the left */
     font-family: Arial, sans-serif; /* Use Arial font */
@@ -174,30 +216,60 @@ ol {
     background-color: #0056b3;
 }
 
+/* Target-style specifications table: two columns, clear separation, zebra rows, bold left column */
 .specifications-table-vertical {
     width: 100%;
-    max-width: 600px;
-    margin: 24px 0 32px 40px;
-    border-collapse: collapse;
+    max-width: 90%;
+    margin: 32px auto 40px auto;
+    border-collapse: separate;
+    border-spacing: 0;
     background: #fff;
-    border-radius: 10px;
+    border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    color: #222;
 }
+
 .specifications-table-vertical th,
 .specifications-table-vertical td {
-    padding: 12px 18px;
-    border-bottom: 1px solid #eee;
+    padding: 16px 20px;
     text-align: left;
+    border-bottom: 1px solid #ececec;
 }
+
 .specifications-table-vertical th {
     background: #f7f7f7;
     font-weight: 600;
     width: 220px;
+    color: #222;
+    border-right: 1px solid #ececec;
+    vertical-align: top;
 }
+
+.specifications-table-vertical tr:nth-child(even) td,
+.specifications-table-vertical tr:nth-child(even) th {
+    background: #fafafa;
+}
+
 .specifications-table-vertical tr:last-child td,
 .specifications-table-vertical tr:last-child th {
     border-bottom: none;
+}
+
+@media (max-width: 700px) {
+    .specifications-table-vertical {
+        font-size: 15px;
+        max-width: 98vw;
+    }
+    .specifications-table-vertical th,
+    .specifications-table-vertical td {
+        padding: 12px 10px;
+    }
+    .specifications-table-vertical th {
+        width: 120px;
+    }
 }
 
 .qa-section {
@@ -415,6 +487,7 @@ a {
     margin-bottom: 18px;
 }
 
+
 /* Align description with highlights and switch image */
 .switch-banner-horizontal {
     display: flex;
@@ -423,40 +496,58 @@ a {
     background: #f7f7f7;
     padding: 40px 0 40px 40px;
     position: relative;
-    min-height: 380px; /* Ensures enough height for vertical alignment */
+    min-height: 400px; /* Ensures enough height for vertical alignment */
 }
 
+/* Only prevent distortion for the Switch product image in the switch banner */
 .switch-banner-img {
+    object-fit: contain;
     width: 300px;
     max-width: 20vw;
-    height: auto;
+    height: 300px;
     border-radius: 12px;
     flex-shrink: 0;
     background: #fff;
     display: block;
 }
-
+/* Move Switch OLED title closer to image and left-align with description on switch-landing.html */
 .switch-banner-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    text-align: left;
-    max-width: 600px;
-    margin-top: 60px; /* Pushes description down to align with image */
+    margin-top: 0;              /* Remove extra space above content */
+    padding-top: 0;             /* Remove any top padding */
+    align-items: flex-start;     /* Left-align content */
+    text-align: left;           /* Left-align text */
 }
 
+.switch-banner-content h1 {
+    margin-right:100%;
+    margin-bottom: 12px;        /* Space below title */
+    text-align: left;           /* Ensure left alignment */
+    padding-left: 0;            /* Remove any left padding */
+}
+
+/* Responsive: Stack image above content and size correctly on mobile */
 @media (max-width: 900px) {
     .switch-banner-horizontal {
-        flex-direction: column;
-        align-items: center;
-        padding: 24px 0;
-        gap: 24px;
-        min-height: unset;
+        flex-direction: column !important;
+        align-items: center !important;
+        padding: 20px 0 20px 0 !important;
+        text-align: center !important;
+    }
+    .switch-banner-img {
+        width: 90vw !important;
+        max-width: 350px !important;
+        height: auto !important;
+        margin-bottom: 18px !important;
+        border-radius: 12px !important;
+        display: block !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
     }
     .switch-banner-content {
-        margin-top: 0;
-        max-width: 95vw;
+        align-items: center !important;
+        text-align: center !important;
+        max-width: 95vw !important;
+        margin: 0 auto !important;
     }
 }
 
@@ -1066,7 +1157,7 @@ body, html {
 
 /* categories page */
 /* Improved category list styling for user-friendly box layout */
-.category-list {
+/* .category-list {
     list-style: none;
     padding: 0;
     margin: 30px auto;
@@ -1110,7 +1201,7 @@ body, html {
     color: #222;
     font-weight: 500;
     letter-spacing: 0.01em;
-}
+} */
 
 /* Center main section headers */
 h1, .main-title, .page-title {
@@ -1154,7 +1245,6 @@ h1 + h2, .main-title + h2, .page-title + h2 {
     filter: brightness(0.7);
 }
 
-
 .social-icon {
     width: 32px;
     height: 32px;
@@ -1175,5 +1265,13 @@ h1 + h2, .main-title + h2, .page-title + h2 {
 .footer-section a:hover {
     color: #5a7bc2;            /* Match navbar hover color */
     text-decoration: none;
+}
+
+.footer-container h3 {
+    justify-content: space-between;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    margin: 0 auto;
+    padding: 0 20px;
+    text-align:left;
 }
 
